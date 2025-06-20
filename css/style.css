@@ -104,9 +104,9 @@ header.header-fixed { /* Para otras páginas */
 
 .navbar-logo {
     font-family: var(--font-secondary);
-    font-size: 1.8em;
+    /* font-size: 1.8em; */ /* Removido o ajustado para el logo img */
     font-weight: bold;
-    color: var(--text-color-light);
+    color: var(--text-color-light); /* Esto aplicaría al 'alt' text si la imagen no carga */
 }
 
 .navbar-links {
@@ -1238,3 +1238,28 @@ body.page-contacto main {
 .polarizado-grid-item, .accesorio-item, .galeria-item, .testimonial-item {
     /* Ya tienen transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
+
+/* Estilos para el Logo en el Navbar */
+.navbar-logo img {
+    max-height: 40px; /* Ajusta según la altura de tu navbar y el tamaño deseado del logo */
+    width: auto;
+    display: block; /* Para evitar espacio extra debajo si es inline */
+    vertical-align: middle; /* Ayuda a alinear con otros elementos si es necesario */
+}
+
+/* Ajuste para el contenedor del logo si es necesario */
+.navbar .container .navbar-logo {
+    /* El .navbar-logo es un <a>, podría necesitar display:flex para centrar la img si la img es más pequeña que el <a> */
+    /* Pero como la imagen es el único contenido, debería estar bien */
+    /* Quitar padding si el texto del logo lo tenía y la imagen no lo necesita */
+    font-size: 1em; /* Resetear font-size si el <a> lo tenía para el texto */
+}
+
+/* Si el navbar tiene una altura fija, la imagen se adaptará a max-height.
+   La altura del navbar se define por el padding en .navbar .container y el tamaño de los links.
+   Padding actual en .navbar .container es 15px arriba/abajo.
+   Los links tienen padding 5px 0. Un logo de 40px de alto encajará bien.
+   (15px padding + 40px logo + 15px padding = 70px altura total del header si el logo es el más alto)
+   (15px padding + ~20px link + 5px padding link + 15px padding = ~55px altura si el link es el más alto)
+   La altura del navbar es variable. max-height: 40px para el logo está bien.
+*/
