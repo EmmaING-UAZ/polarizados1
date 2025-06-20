@@ -413,11 +413,11 @@ body.page-contacto main {
     #hero {
         height: auto; /* Altura automática para contenido */
         min-height: 70vh;
-        text-align: center; /* Centrar texto en móviles */
+        /* text-align: center; QUITADO */
         padding: 60px 0; /* Más padding para que no se pegue al header */
     }
     .hero-content {
-        margin: 0 auto; /* Centrar el bloque de contenido */
+        /* margin: 0 auto; QUITADO */
         padding-left: 15px; /* Asegurar padding lateral */
         padding-right: 15px;
     }
@@ -428,8 +428,8 @@ body.page-contacto main {
         font-size: 1em;
     }
     .hero-cta .btn {
-        width: 100%; /* Botones ocupan todo el ancho */
-        margin-right: 0;
+        /* width: 100%; QUITADO */
+        /* margin-right: 0; QUITADO */
         margin-bottom: 15px;
     }
     .hero-cta .btn:last-child {
