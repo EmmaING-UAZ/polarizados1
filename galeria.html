@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre nuestros servicios de galeria automotrices. Calidad y profesionalismo garantizado.">
+    <title>Polarizados y Accesorios AutoMaster - Galeria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-galeria">
+    <header class="header-fixed">
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-logo">AutoMaster</a>
+            <ul class="navbar-links">
+                <li><a href="index.html" id="nav-index">Inicio</a></li>
+                <li><a href="servicios.html" id="nav-servicios">Servicios</a></li>
+                <li><a href="accesorios.html" id="nav-accesorios">Accesorios</a></li>
+                <li><a href="galeria.html" id="nav-galeria" class="active">Galería</a></li>
+                <li><a href="contacto.html" id="nav-contacto">Contacto</a></li>
+            </ul>
+            <div class="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+<main class="container page-galeria-content">
+    <section id="galeria-intro" class="text-center section-padding">
+        <h1>Galería de Nuestros Trabajos</h1>
+        <p class="subtitle">Explora una selección de vehículos que hemos transformado con nuestros servicios de polarizado y accesorios. Calidad y detalle en cada proyecto.</p>
+    </section>
+
+    <section id="galeria-filtros" class="section-padding-top">
+        <h2 class="section-title text-center">Filtrar por Tipo de Vehículo</h2>
+        <div class="filtros-buttons text-center">
+            <button class="btn btn-filter active" data-filter="all">Todos</button>
+            <button class="btn btn-filter" data-filter="sedan">Sedán</button>
+            <button class="btn btn-filter" data-filter="suv">SUV</button>
+            <button class="btn btn-filter" data-filter="camioneta">Camioneta</button>
+            <button class="btn btn-filter" data-filter="deportivo">Deportivo</button>
+        </div>
+    </section>
+
+    <section id="galeria-grid-section" class="section-padding">
+        <div class="galeria-grid">
+            <!-- Sedanes -->
+            <div class="galeria-item" data-category="sedan" data-large-src="images/gallery/sedan-polarizado1-large.jpg" data-description="Polarizado cerámico en sedán color negro.">
+                <img src="images/gallery/sedan-polarizado1-thumb.jpg" alt="Sedán negro con polarizado cerámico">
+                <div class="galeria-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="galeria-item" data-category="sedan" data-large-src="images/gallery/sedan-polarizado2-large.jpg" data-description="Polarizado de seguridad en sedán gris.">
+                <img src="images/gallery/sedan-polarizado2-thumb.jpg" alt="Sedán gris con polarizado de seguridad">
+                <div class="galeria-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+
+            <!-- SUVs -->
+            <div class="galeria-item" data-category="suv" data-large-src="images/gallery/suv-polarizado1-large.jpg" data-description="SUV blanca con polarizado de control solar.">
+                <img src="images/gallery/suv-polarizado1-thumb.jpg" alt="SUV blanca con polarizado control solar">
+                <div class="galeria-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="galeria-item" data-category="suv" data-large-src="images/gallery/suv-accesorios1-large.jpg" data-description="SUV con luces exploradoras LED instaladas.">
+                <img src="images/gallery/suv-accesorios1-thumb.jpg" alt="SUV con luces exploradoras LED">
+                <div class="galeria-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+
+            <!-- Camionetas -->
+            <div class="galeria-item" data-category="camioneta" data-large-src="images/gallery/camioneta-polarizado1-large.jpg" data-description="Camioneta pickup con polarizado oscuro.">
+                <img src="images/gallery/camioneta-polarizado1-thumb.jpg" alt="Camioneta pickup con polarizado oscuro">
+                <div class="galeria-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+
+            <!-- Deportivos -->
+            <div class="galeria-item" data-category="deportivo" data-large-src="images/gallery/deportivo-polarizado1-large.jpg" data-description="Auto deportivo rojo con polarizado nanocarbono.">
+                <img src="images/gallery/deportivo-polarizado1-thumb.jpg" alt="Auto deportivo rojo con polarizado nanocarbono">
+                <div class="galeria-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+             <div class="galeria-item" data-category="sedan" data-large-src="images/gallery/sedan-polarizado3-large.jpg" data-description="Detalle de polarizado en ventana de sedán.">
+                <img src="images/gallery/sedan-polarizado3-thumb.jpg" alt="Detalle polarizado ventana sedán">
+                <div class="galeria-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+             <div class="galeria-item" data-category="suv" data-large-src="images/gallery/suv-polarizado2-large.jpg" data-description="SUV familiar con polarizado para privacidad.">
+                <img src="images/gallery/suv-polarizado2-thumb.jpg" alt="SUV familiar con polarizado privacidad">
+                <div class="galeria-item-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para la Galería -->
+    <div id="galeriaModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption"></div>
+    </div>
+</main>
+    <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3 class="logo-text">AutoMaster</h3>
+                <p>
+                    Especialistas en polarizados y accesorios para vehículos. Calidad, estilo y profesionalismo a tu servicio.
+                </p>
+                <div class="contact">
+                    <span><i class="fas fa-phone"></i> &nbsp; (123) 456-7890</span>
+                    <span><i class="fas fa-envelope"></i> &nbsp; info@automaster.example.com</span>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="accesorios.html">Accesorios</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <!-- Puedes añadir más enlaces como "Política de Privacidad" aquí -->
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 AutoMaster | Todos los derechos reservados.
+        </div>
+    </div>
+</footer>
+<a href="#" id="go-top-btn" title="Ir arriba">
+    <i class="fas fa-arrow-up"></i>
+</a>
+<a href="https://wa.me/1234567890" id="whatsapp-btn" target="_blank" title="Contáctanos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+    <script src="js/main.js"></script>
+</body>
+</html>

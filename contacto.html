@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre nuestros servicios de contacto automotrices. Calidad y profesionalismo garantizado.">
+    <title>Polarizados y Accesorios AutoMaster - Contacto</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-contacto">
+    <header class="header-fixed">
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-logo">AutoMaster</a>
+            <ul class="navbar-links">
+                <li><a href="index.html" id="nav-index">Inicio</a></li>
+                <li><a href="servicios.html" id="nav-servicios">Servicios</a></li>
+                <li><a href="accesorios.html" id="nav-accesorios">Accesorios</a></li>
+                <li><a href="galeria.html" id="nav-galeria">Galería</a></li>
+                <li><a href="contacto.html" id="nav-contacto" class="active">Contacto</a></li>
+            </ul>
+            <div class="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+<main class="container page-contacto-content">
+    <section id="contacto-intro" class="text-center section-padding">
+        <h1>Contáctanos</h1>
+        <p class="subtitle">¿Tienes preguntas o deseas cotizar un servicio? Estamos aquí para ayudarte. Completa el formulario o contáctanos directamente.</p>
+    </section>
+
+    <section id="contacto-detalles" class="section-padding-top">
+        <div class="contacto-info-container">
+            <div class="contacto-info-item">
+                <i class="fas fa-phone fa-2x accent-icon"></i>
+                <h3>Teléfono</h3>
+                <p><a href="tel:+1234567890">(123) 456-7890</a></p>
+            </div>
+            <div class="contacto-info-item">
+                <i class="fas fa-envelope fa-2x accent-icon"></i>
+                <h3>Correo Electrónico</h3>
+                <p><a href="mailto:info@automaster.example.com">info@automaster.example.com</a></p>
+            </div>
+            <div class="contacto-info-item">
+                <i class="fas fa-map-marker-alt fa-2x accent-icon"></i>
+                <h3>Dirección</h3>
+                <p>Calle Falsa 123, Ciudad, País</p>
+                <p>(Visitas solo con cita previa)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="formulario-contacto" class="section-padding">
+        <h2 class="section-title text-center">Envíanos un Mensaje</h2>
+        <form action="#" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Número de Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_servicio">Tipo de Servicio de Interés:</label>
+                <select id="tipo_servicio" name="tipo_servicio">
+                    <option value="">Selecciona uno...</option>
+                    <option value="polarizado_seguridad">Polarizado de Seguridad</option>
+                    <option value="polarizado_control_solar">Polarizado de Control Solar</option>
+                    <option value="polarizado_privacidad">Polarizado de Privacidad</option>
+                    <option value="accesorios">Accesorios Automotrices</option>
+                    <option value="otro">Otro (especificar en mensaje)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-submit">Enviar Mensaje</button>
+            </div>
+        </form>
+    </section>
+
+    <section id="ubicacion-mapa" class="section-padding-top">
+        <h2 class="section-title text-center">Nuestra Ubicación</h2>
+        <div class="map-placeholder">
+            <!--
+            Para un mapa de Google Maps real, podrías usar algo como esto:
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.900000000000!2d-74.00000000000000!3d4.60000000000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMDAnMDAuMCJOIDc0wrAwJzAwLjAiVw!5e0!3m2!1ses!2sco!4v1600000000000!5m2!1ses!2sco"
+                width="100%"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+            Asegúrate de reemplazar el src con el código de embed de tu ubicación.
+            -->
+            <img src="images/mapa-placeholder.png" alt="Mapa de ubicación de AutoMaster (simulado)" style="width:100%; height:auto; border: 1px solid #ccc;">
+            <p class="text-center" style="margin-top:10px; font-style:italic;">Mapa simulado. Aquí iría el mapa interactivo de Google Maps.</p>
+        </div>
+    </section>
+</main>
+    <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3 class="logo-text">AutoMaster</h3>
+                <p>
+                    Especialistas en polarizados y accesorios para vehículos. Calidad, estilo y profesionalismo a tu servicio.
+                </p>
+                <div class="contact">
+                    <span><i class="fas fa-phone"></i> &nbsp; (123) 456-7890</span>
+                    <span><i class="fas fa-envelope"></i> &nbsp; info@automaster.example.com</span>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="accesorios.html">Accesorios</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <!-- Puedes añadir más enlaces como "Política de Privacidad" aquí -->
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 AutoMaster | Todos los derechos reservados.
+        </div>
+    </div>
+</footer>
+<a href="#" id="go-top-btn" title="Ir arriba">
+    <i class="fas fa-arrow-up"></i>
+</a>
+<a href="https://wa.me/1234567890" id="whatsapp-btn" target="_blank" title="Contáctanos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+    <script src="js/main.js"></script>
+</body>
+</html>
