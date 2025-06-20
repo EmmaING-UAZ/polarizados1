@@ -1,10 +1,12 @@
 /* Estilos Globales */
 :root {
-    --primary-color: #1a1a1a; /* Color principal oscuro */
-    --secondary-color: #f0f0f0; /* Color secundario claro */
-    --accent-color: #007bff; /* Color de acento (ej. azul) */
-    --text-color-dark: #333;
-    --text-color-light: #fff;
+    --primary-color: #000000; /* Negro, usado para fondos oscuros como header/footer y texto principal */
+    --secondary-color: #ffffff; /* Blanco, usado para fondos de secciones claras */
+    --accent-color: #b82023; /* Rojo intenso, para botones, enlaces, acentos visuales */
+    --text-color-dark: #000000; /* Negro, para texto sobre fondos claros */
+    --text-color-light: #ffffff; /* Blanco, para texto sobre fondos oscuros */
+    --grey-light: #c8c8c8; /* Gris claro, para bordes, contornos, detalles suaves */
+    --red-dark: #732122; /* Rojo oscuro, para sombras del rojo o acentos secundarios */
     --font-primary: 'Roboto', sans-serif;
     --font-secondary: 'Montserrat', sans-serif;
 }
@@ -382,8 +384,8 @@ body.page-contacto main {
 }
 
 .btn-primary:hover {
-    background-color: darken(var(--accent-color), 10%);
-    border-color: darken(var(--accent-color), 10%);
+    background-color: var(--red-dark);
+    border-color: var(--red-dark);
     transform: translateY(-2px);
 }
 
@@ -733,8 +735,8 @@ body.page-contacto main {
 }
 
 .btn-accent:hover {
-    background-color: darken(var(--accent-color), 10%);
-    border-color: darken(var(--accent-color), 10%);
+    background-color: var(--red-dark);
+    border-color: var(--red-dark);
 }
 
 /* Catálogo de Accesorios */
@@ -1172,7 +1174,7 @@ body.page-contacto main {
 }
 
 #go-top-btn:hover {
-    background-color: darken(var(--accent-color), 10%);
+    background-color: var(--red-dark);
 }
 
 #go-top-btn.show {
@@ -1202,7 +1204,7 @@ body.page-contacto main {
 }
 
 #whatsapp-btn:hover {
-    background-color: darken(#25D366, 10%);
+    background-color: #20A854;
     transform: scale(1.1);
 }
 
