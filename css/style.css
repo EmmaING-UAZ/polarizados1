@@ -320,6 +320,7 @@ body.page-contacto main {
 }
 
 .hero-background .hero-bg-img {
+    filter: brightness(2);
     width: 100%;
     height: 100%;
     object-fit: cover; /* Cubre todo el área sin perder proporciones */
@@ -360,7 +361,7 @@ body.page-contacto main {
 }
 
 .hero-text p {
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin-bottom: 1.5em;
     line-height: 1.7;
     color: #f0f0f0; /* Un gris claro para el párrafo */
@@ -409,6 +410,7 @@ body.page-contacto main {
     .hero-text p {
         font-size: 1.1em;
     }
+    
 }
 
 @media (max-width: 768px) {
@@ -1240,6 +1242,13 @@ body.page-contacto main {
 }
 
 /* Estilos para el Logo en el Navbar */
+.navbar-logo-home img {
+    max-height: 100px; /* Ajusta según la altura de tu navbar y el tamaño deseado del logo */
+    width: auto;
+    display: block; /* Para evitar espacio extra debajo si es inline */
+    vertical-align: middle; /* Ayuda a alinear con otros elementos si es necesario */
+}
+
 .navbar-logo img {
     max-height: 40px; /* Ajusta según la altura de tu navbar y el tamaño deseado del logo */
     width: auto;
