@@ -234,6 +234,21 @@ footer {
     font-size: 0.85em;
 }
 
+.footer-epicsistems {
+    margin-top: 10px;
+    font-size: 0.9em;
+    text-align: center; /* Centra el texto */
+}
+
+.footer-epicsistems a {
+    color: var(--accent-color); /* Usa el color de acento para el enlace */
+    text-decoration: none;
+}
+
+.footer-epicsistems a:hover {
+    text-decoration: underline; /* Subraya al pasar el mouse */
+}
+
 /* Adaptación para main content cuando el header es fijo */
 body.page-servicios main,
 body.page-accesorios main,
@@ -1038,11 +1053,23 @@ body.page-contacto main {
 
 /* Mapa */
 .map-placeholder {
-    /* Estilos para el contenedor del mapa si son necesarios */
-    /* La imagen ya tiene estilos inline, pero se puede añadir más aquí */
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
     margin-bottom: 30px;
 }
 
+.map-placeholder iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none; /* Asegurar que no haya borde por defecto del iframe */
+}
 
 /* Responsividad para Contacto */
 @media (max-width: 768px) {
@@ -1059,6 +1086,19 @@ body.page-contacto main {
     }
     .contact-form {
         padding: 20px;
+    }
+    .map-placeholder {
+        padding-top: 75%; /* Aspect Ratio 4:3 para pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    #contacto-intro h1 {
+        font-size: 2em;
+    }
+    .map-placeholder {
+        /* Podríamos considerar una altura fija o un aspect ratio aún menor si es necesario */
+        /* padding-top: 75%; // Mantenemos 4:3 o ajustamos si es demasiado alto */
     }
 }
 
