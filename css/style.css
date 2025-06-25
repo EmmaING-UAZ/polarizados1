@@ -2,11 +2,11 @@
 :root {
     --primary-color: #000000; /* Negro, usado para fondos oscuros como header/footer y texto principal */
     --secondary-color: #ffffff; /* Blanco, usado para fondos de secciones claras */
-    --accent-color: #b82023; /* Rojo intenso, para botones, enlaces, acentos visuales */
+    --accent-color: #fffc33; /* Rojo intenso, para botones, enlaces, acentos visuales */
     --text-color-dark: #000000; /* Negro, para texto sobre fondos claros */
     --text-color-light: #ffffff; /* Blanco, para texto sobre fondos oscuros */
     --grey-light: #c8c8c8; /* Gris claro, para bordes, contornos, detalles suaves */
-    --red-dark: #732122; /* Rojo oscuro, para sombras del rojo o acentos secundarios */
+    --red-dark: #edcb07; /* Rojo oscuro, para sombras del rojo o acentos secundarios */
     --font-primary: 'Roboto', sans-serif;
     --font-secondary: 'Montserrat', sans-serif;
 }
@@ -802,7 +802,7 @@ body.page-contacto main {
 .btn-filter:hover,
 .btn-filter.active {
     background-color: var(--accent-color);
-    color: var(--text-color-light);
+    color: var(--grey-light);
 }
 
 /* Grid de Galería */
