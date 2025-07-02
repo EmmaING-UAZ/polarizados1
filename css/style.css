@@ -1312,3 +1312,127 @@ body.page-contacto main {
    (15px padding + ~20px link + 5px padding link + 15px padding = ~55px altura si el link es el más alto)
    La altura del navbar es variable. max-height: 40px para el logo está bien.
 */
+
+/* Estilos para la sección XPEL */
+#polarizado-xpel {
+    /* Ya tiene .section-padding y .bg-light (o #f9f9f9 si se prefiere) */
+}
+
+.xpel-title {
+    font-size: 2.5em; /* Similar a text-3xl o 4xl */
+    font-weight: bold; /* Ya lo tiene por .section-title pero se puede ajustar */
+    color: var(--text-color-dark); /* Asegurar color principal */
+    margin-bottom: 20px; /* Espacio antes del subtítulo */
+}
+.xpel-title::after { /* Hereda el subrayado de .section-title, se puede personalizar si es necesario */
+    width: 100px; /* Un poco más ancho para un título principal */
+}
+
+
+.xpel-subtitle {
+    font-size: 1.1em; /* Buena legibilidad */
+    color: #6b7280; /* Similar a text-gray-500 o text-muted */
+    max-width: 800px; /* Para que no sea demasiado ancho */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px; /* Espacio antes de la descripción */
+}
+
+.xpel-description {
+    font-size: 1em;
+    color: #374151; /* Un gris más oscuro para el texto principal */
+    max-width: 800px;
+    margin: 0 auto 40px auto; /* Centrado y con margen inferior */
+    line-height: 1.7;
+}
+.xpel-description p {
+    margin-bottom: 0; /* Quitar margen si solo hay un párrafo */
+}
+
+.xpel-cards-title {
+    font-size: 2em; /* Un poco más pequeño que el título principal de la sección */
+    color: var(--primary-color);
+    margin-top: 50px; /* Espacio sobre el título de las tarjetas */
+    margin-bottom: 30px;
+}
+.xpel-cards-title::after {
+    width: 70px; /* Subrayado un poco más corto */
+}
+
+.xpel-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo */
+    gap: 30px; /* Espacio entre tarjetas */
+}
+
+.xpel-card {
+    background-color: var(--secondary-color); /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 25px; /* Padding interno cómodo */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Sombra sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.xpel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.xpel-card-title {
+    font-family: var(--font-secondary);
+    font-size: 1.4em; /* Tamaño del título de la tarjeta */
+    color: var(--text-color-dark);
+    margin-bottom: 15px;
+}
+
+.xpel-card-description {
+    font-size: 0.95em;
+    color: #4b5563; /* Gris para la descripción */
+    line-height: 1.6;
+    flex-grow: 1; /* Para que todas las tarjetas tengan la misma altura si el contenido varía */
+}
+
+/* Responsividad adicional para la sección XPEL si es necesario */
+@media (max-width: 768px) {
+    .xpel-title {
+        font-size: 2.1em;
+    }
+    .xpel-subtitle {
+        font-size: 1em;
+    }
+    .xpel-cards-title {
+        font-size: 1.8em;
+    }
+    .xpel-cards-container {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+    .xpel-card {
+        padding: 20px;
+    }
+}
+
+.xpel-cta-button {
+    padding: 12px 30px; /* Padding generoso */
+    font-size: 1.1em; /* Tamaño de fuente legible */
+    text-transform: uppercase; /* Texto en mayúsculas como otros CTAs */
+    font-weight: bold;
+    /* Hereda colores de .btn-primary:
+       background-color: var(--accent-color);
+       color: var(--text-color-light);
+       border: 2px solid var(--accent-color); */
+    /* Hereda hover de .btn-primary:
+       background-color: var(--red-dark);
+       border-color: var(--red-dark);
+       transform: translateY(-2px); */
+    /* Hereda también la sombra en hover de .btn */
+    display: inline-block; /* Para que el margin-top funcione */
+    margin-top: 20px; /* Espacio arriba del botón si se usa text-center en el div padre */
+}
+
+/* Ajuste para .btn-lg si no existe o para asegurar el tamaño */
+.btn-lg {
+    padding: 12px 30px !important; /* !important para asegurar si hay otros estilos de .btn */
+    font-size: 1.1em !important;
+}
