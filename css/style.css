@@ -91,9 +91,7 @@ header.header-fixed { /* Para otras páginas */
     }
 }
 
-.navbar {
-    /* padding: 15px 0; */ /* Se maneja en .navbar .container */
-}
+
 
 .navbar .container {
     display: flex;

@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    
     // Funcionalidad para cambiar el navbar de transparente a sólido en index.html
     // y manejar la clase 'header-fixed' para otras páginas.
     if (header && header.classList.contains('header-transparent')) { // Solo si es el header de index
