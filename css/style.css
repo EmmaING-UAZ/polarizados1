@@ -871,30 +871,40 @@ body.page-contacto main {
     display: none; /* Oculto por defecto */
     position: fixed;
     z-index: 2000; /* Encima de todo */
-    padding-top: 50px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: auto; /* Permitir scroll si la imagen es muy alta, aunque se intenta evitar */
     background-color: rgba(0,0,0,0.85); /* Fondo oscuro semitransparente */
+    display: flex; /* Usar flexbox para centrar */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    padding: 20px; /* Pequeño padding alrededor para móviles */
+    box-sizing: border-box;
 }
 
 .modal-content {
-    margin: auto;
+    /* margin: auto; No es necesario con flexbox en .modal */
     display: block;
-    max-width: 85%;
-    max-height: 80vh;
+    max-width: 90%; /* Máximo ancho relativo al viewport */
+    max-height: 90vh; /* Máxima altura relativa al viewport */
+    width: auto; /* Para que la imagen mantenga su aspect ratio */
+    height: auto; /* Para que la imagen mantenga su aspect ratio */
+    object-fit: contain; /* Asegura que toda la imagen sea visible */
     animation-name: zoom;
     animation-duration: 0.4s;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3); /* Opcional: sombra para la imagen */
 }
 
 @keyframes zoom {
-    from {transform:scale(0.5)}
-    to {transform:scale(1)}
+    from {transform:scale(0.5); opacity: 0.5;}
+    to {transform:scale(1); opacity: 1;}
 }
 
 #modalCaption {
+    display: none; /* Ocultar la descripción del coche */
+    /*
     margin: 15px auto;
     display: block;
     width: 80%;
@@ -903,6 +913,7 @@ body.page-contacto main {
     color: #ccc;
     font-size: 1.1em;
     padding: 10px 0;
+    */
 }
 
 .modal-close {
