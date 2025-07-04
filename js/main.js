@@ -58,48 +58,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const galeriaItems = document.querySelectorAll('.galeria-item');
     const modal = document.getElementById('galeriaModal');
     const modalImage = document.getElementById('modalImage');
-    // const modalCaption = document.getElementById('modalCaption'); // Ya no se usa
-    const closeModalBtn = document.querySelector('.modal-close'); // Renombrado para claridad
-    const navbarLinksForGallery = document.querySelector('.navbar-links'); // Para chequear si el menú está activo
+    const modalCaption = document.getElementById('modalCaption');
+    const closeModal = document.querySelector('.modal-close');
 
     if (modal) { // Asegurarse que el modal existe en la página actual
         galeriaItems.forEach(item => {
-            item.addEventListener('click', (event) => {
-                // Prevenir que el clic se propague, podría ayudar si hay elementos anidados.
-                event.stopPropagation();
-
-                // Condición Adicional: No abrir el modal si el menú hamburguesa está activo.
-                if (navbarLinksForGallery && navbarLinksForGallery.classList.contains('active')) {
-                    // Opcional: cerrar el menú si se hace clic en un item de galería mientras el menú está abierto
-                    // navbarLinksForGallery.classList.remove('active');
-                    // const icon = document.querySelector('.navbar-toggle i');
-                    // if (icon) {
-                    //     icon.classList.remove('fa-times');
-                    //     icon.classList.add('fa-bars');
-                    // }
-                    return; // No hacer nada más si el menú está activo
-                }
-
-                // Asegurarse de que el clic fue directamente en el item o un descendiente cercano,
-                // y no en algo que esté sobre él accidentalmente.
-                // 'currentTarget' es el elemento al que se adjuntó el listener (el .galeria-item)
-                if (event.currentTarget === item) {
-                    modal.style.display = "flex"; // Usar flex para el centrado
-                    modalImage.src = item.dataset.largeSrc;
-                    // modalCaption.innerHTML = item.dataset.description || ''; // Ya no se usa
-                }
+            item.addEventListener('click', () => {
+                modal.style.display = "block";
+                modalImage.src = item.dataset.largeSrc;
+                modalCaption.innerHTML = item.dataset.description || ''; // Muestra descripción si existe
             });
         });
 
-        if (closeModalBtn) {
-            closeModalBtn.addEventListener('click', () => {
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
                 modal.style.display = "none";
             });
         }
 
-        // Cerrar modal al hacer clic fuera de la imagen (en el fondo del modal)
-        modal.addEventListener('click', (event) => { // Cambiado de window a modal
-            if (event.target === modal) { // Solo si el clic es directamente en el fondo del modal
+        // Cerrar modal al hacer clic fuera de la imagen
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
                 modal.style.display = "none";
             }
         });
