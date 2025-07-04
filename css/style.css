@@ -663,126 +663,161 @@ body.page-contacto main {
 }
 
 /* Estilos para la página de Accesorios (accesorios.html) */
-.page-accesorios-content {
-    /* Estilos específicos para el main de accesorios si son necesarios */
-}
+/* .page-accesorios-content se asegura con el padding-top general si el header es fijo */
+/* y .container maneja el ancho máximo y centrado. */
 
-#accesorios-intro h1 {
-    font-size: 2.8em;
+/* Estilos para la sección de introducción de accesorios */
+#accesorios-intro h1 { /* Hereda .section-title pero podemos ser más específicos si es necesario */
+    font-size: 2.8em; /* Tamaño consistente con otras páginas */
     color: var(--primary-color);
     margin-bottom: 15px;
 }
-
-/* Accesorios Destacados */
-.accesorios-destacados-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-    margin-bottom: 50px; /* Espacio antes del catálogo completo */
-}
-
-.accesorio-item {
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.accesorio-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-}
-
-.accesorio-item-img img {
-    width: 100%;
-    height: 220px; /* Altura para imágenes de accesorios */
-    object-fit: cover;
-}
-
-.accesorio-item.destacado .accesorio-item-img img {
-    height: 250px; /* Imágenes un poco más grandes para destacados */
-}
-
-.accesorio-item-content {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.accesorio-item-content h3 {
-    font-size: 1.3em;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-    font-family: var(--font-secondary);
-}
-
-.accesorio-item-content p {
-    font-size: 0.9em;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Empuja precio y botón abajo si es necesario */
-}
-
-.accesorio-price {
-    display: block;
+#accesorios-intro .subtitle { /* Hereda .subtitle */
     font-size: 1.1em;
-    font-weight: bold;
-    color: var(--accent-color);
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 30px auto; /* Centrado y con margen inferior */
+}
+
+
+/* Estilos para la sección de cards de productos destacados */
+#productos-destacados-cards .section-title { /* Hereda .section-title */
+    margin-bottom: 40px; /* Espacio estándar */
+}
+
+.accesorios-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3-4 col en desktop */
+    gap: 25px; /* Espacio entre cards */
+    margin-bottom: 50px; /* Espacio antes de la siguiente sección */
+}
+
+.accesorio-card-item {
+    background-color: var(--secondary-color); /* Blanco */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.accesorio-card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.accesorio-card-item img { /* Clase .img-fluid ya haría max-width: 100% y height: auto */
+    /* Adicionalmente, para consistencia de altura y bordes: */
+    height: 200px; /* Altura fija para las imágenes de las cards */
+    object-fit: cover; /* Cubre el área sin distorsionar, puede recortar */
+    border-radius: 4px; /* Bordes redondeados para la imagen misma */
     margin-bottom: 15px;
 }
 
-.btn-sm {
-    padding: 8px 15px;
-    font-size: 0.85em;
+.accesorio-card-item h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.4em;
+    color: var(--text-color-dark);
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
-.btn-accent {
-    background-color: var(--accent-color);
-    color: var(--text-color-light);
-    border: 2px solid var(--accent-color);
-    align-self: flex-start; /* Alinea el botón a la izquierda dentro del content */
+.accesorio-card-item p {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+    flex-grow: 1; /* Para que el texto ocupe espacio y los botones (si los hubiera) se alineen abajo */
+    margin-bottom: 0; /* Si no hay botón, quitar margen inferior del párrafo */
 }
 
-.btn-accent:hover {
-    background-color: var(--red-dark);
-    border-color: var(--red-dark);
+/* Estilos para la lista moderna de accesorios */
+#lista-accesorios-moderna .section-title { /* Hereda .section-title */
+    margin-bottom: 40px;
 }
 
-/* Catálogo de Accesorios */
-.accesorios-catalogo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Items un poco más pequeños */
-    gap: 25px;
-    margin-top: 30px;
+.accesorios-lista-container {
+    background-color: #f8f9fa; /* Fondo claro para destacar la lista */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
+
+ul.lista-moderna {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    column-count: 3; /* Default para desktop */
+    column-gap: 30px;
+}
+
+ul.lista-moderna li {
+    padding: 10px 0;
+    font-size: 0.95em;
+    color: #333;
+    border-bottom: 1px solid #e7e7e7;
+    display: flex; /* Para alinear ícono y texto */
+    align-items: center;
+    break-inside: avoid-column; /* Evitar que los items se corten entre columnas */
+}
+ul.lista-moderna li:last-child { /* Para la última de cada columna si fuera posible, o global */
+    border-bottom: none;
+}
+
+ul.lista-moderna li .icon-bullet {
+    color: var(--accent-color); /* Color de acento para el ícono */
+    margin-right: 12px; /* Espacio entre ícono y texto */
+    font-size: 1em; /* Tamaño del ícono */
+}
+
 
 /* Responsividad para Accesorios */
-@media (max-width: 768px) {
+@media (max-width: 992px) { /* Tablets */
+    .accesorios-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2-3 columnas */
+    }
+    ul.lista-moderna {
+        column-count: 2; /* 2 columnas en tablets */
+    }
+}
+
+@media (max-width: 768px) { /* Móviles grandes y tablets pequeñas */
     #accesorios-intro h1 {
         font-size: 2.4em;
     }
-    .accesorios-destacados-grid, .accesorios-catalogo-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajuste para móviles */
+    .accesorios-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Ajuste para items más pequeños si es necesario o mantener 1-2 */
     }
-    .accesorio-item-img img {
-        height: 200px;
+     .accesorio-card-item img {
+        height: 180px;
     }
-    .accesorio-item.destacado .accesorio-item-img img {
-        height: 220px;
+    ul.lista-moderna {
+        column-count: 1; /* 1 columna en móviles */
+    }
+    .accesorios-lista-container {
+        padding: 20px;
+    }
+    ul.lista-moderna li {
+        font-size: 0.9em;
     }
 }
 
-@media (max-width: 480px) {
-    .accesorios-destacados-grid, .accesorios-catalogo-grid {
-        grid-template-columns: 1fr; /* Una columna en móviles muy pequeños */
+@media (max-width: 480px) { /* Móviles pequeños */
+    .accesorios-cards-grid {
+        grid-template-columns: 1fr; /* 1 columna */
+    }
+    .accesorio-card-item img {
+        height: 160px;
+    }
+     #accesorios-intro h1 {
+        font-size: 2em;
+    }
+    #accesorios-intro .subtitle {
+        font-size: 1em;
     }
 }
+
 
 /* Estilos para la página de Galería (galeria.html) */
 .page-galeria-content {
