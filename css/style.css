@@ -91,6 +91,110 @@ header.header-fixed { /* Para otras páginas */
     }
 }
 
+/* Estilos para la sección de Comparación de Polarizado (index.html) */
+#polarizado-comparacion {
+    /* section-padding ya gestiona el padding vertical */
+    /* El .container interno gestiona el ancho y centrado del contenido textual */
+}
+
+.comparison-slider-container {
+    position: relative;
+    max-width: 800px; /* Ancho máximo del comparador */
+    margin: 30px auto 0; /* Margen superior para separarlo del subtítulo, y centrado */
+    overflow: hidden; /* Para que el clip-path funcione bien y no se desborde */
+    border-radius: 8px; /* Bordes redondeados para el contenedor */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+.comparison-image-container {
+    position: relative;
+    width: 100%;
+    /* Usaremos la proporción de la imagen 'después' (1470x650) que es ~2.26:1 */
+    /* O una estándar como 16:9 (1.77) o 2:1. Probemos con 2:1 para un look panorámico. */
+    aspect-ratio: 2 / 1; /* Ajustar según el contenido visual de las imágenes */
+    overflow: hidden; /* Esencial por si las imágenes tienen aspect ratios diferentes */
+    background-color: #e0e0e0; /* Color de fondo mientras cargan las imágenes */
+}
+
+.comparison-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre el contenedor, puede recortar la imagen */
+    object-position: center; /* Centra la imagen dentro del contenedor */
+    user-select: none; /* Evitar selección de imagen al arrastrar */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE */
+}
+
+.image-after {
+    /* Inicialmente, la imagen 'after' (derecha) se muestra desde el 50% hasta el 100% del ancho */
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+}
+
+.comparison-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa todo el contenedor de imágenes */
+    height: 100%;
+    opacity: 0; /* Hacemos el input range invisible */
+    cursor: ew-resize; /* Cursor para indicar deslizamiento horizontal */
+    z-index: 10; /* Encima de las imágenes para capturar eventos */
+    margin: 0;
+    padding: 0;
+}
+
+/* Divisor visual (opcional pero recomendado para guiar al usuario) */
+.comparison-image-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: var(--slider-position, 50%); /* Posición controlada por JS, fallback a 50% */
+    width: 4px; /* Ancho del divisor */
+    height: 100%;
+    background-color: var(--accent-color); /* Color de acento del sitio */
+    z-index: 5; /* Entre las imágenes y el slider invisible */
+    transform: translateX(-50%); /* Centra la línea respecto a su 'left' */
+    pointer-events: none; /* Para que no interfiera con el input range */
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Sombra sutil para el divisor */
+}
+
+/* Estilos para el "thumb" del input range si quisiéramos personalizarlo (más complejo y dependiente del navegador) */
+/* Por ahora, el input es invisible, así que no es necesario. */
+
+/* Responsividad para el comparador */
+@media (max-width: 992px) {
+    .comparison-slider-container {
+        max-width: 600px; /* Reducir un poco el ancho en tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .comparison-slider-container {
+        max-width: 100%; /* Ocupar más ancho disponible en móviles */
+        margin-left: 15px; /* Pequeño margen si no está dentro de un .container propio */
+        margin-right: 15px;
+        border-radius: 6px;
+    }
+     #polarizado-comparacion .subtitle { /* Asegurar que el subtítulo también se ajuste */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comparison-image-container {
+        aspect-ratio: 16 / 9; /* Podría ser mejor una proporción más alta en móviles */
+    }
+    .comparison-image-container::before { /* Divisor un poco más delgado en móviles */
+        width: 3px;
+    }
+}
+
 
 
 .navbar .container {

@@ -133,5 +133,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ejemplo:
     // Funcion para X tarea, recibe Y parametros.
 
+    // Funcionalidad para el comparador de imágenes de polarizado
+    const comparisonContainer = document.querySelector('#polarizado-comparacion');
+    if (comparisonContainer) {
+        const slider = comparisonContainer.querySelector('.comparison-slider');
+        const imageAfter = comparisonContainer.querySelector('.image-after');
+        const imageContainer = comparisonContainer.querySelector('.comparison-image-container'); // Para el divisor
+
+        if (slider && imageAfter && imageContainer) {
+            const divisor = imageContainer.querySelector('::before'); // Esto no funciona así para pseudo-elementos
+
+            slider.addEventListener('input', (e) => {
+                const sliderValue = e.target.value;
+                imageAfter.style.clipPath = `polygon(${sliderValue}% 0, 100% 0, 100% 100%, ${sliderValue}% 100%)`;
+                // Para mover el divisor visual, actualizamos una variable CSS en el contenedor
+                imageContainer.style.setProperty('--slider-position', `${sliderValue}%`);
+            });
+
+            // Establecer la posición inicial del divisor basado en el valor inicial del slider
+            imageContainer.style.setProperty('--slider-position', `${slider.value}%`);
+
+            // Asegúrate de que en style.css, la propiedad 'left' del divisor .comparison-image-container::before
+            // esté definida como: left: var(--slider-position, 50%);
+        }
+    }
+
 // Ajuste final para asegurar que el evento DOMContentLoaded cierra correctamente
 });
