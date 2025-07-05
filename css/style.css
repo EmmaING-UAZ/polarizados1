@@ -870,9 +870,9 @@ ul.lista-moderna li:last-child { /* Para la última de cada columna si fuera pos
 }
 
 ul.lista-moderna li .icon-bullet {
-    color: var(--accent-color); /* Color de acento para el ícono */
+    color: #383838; /* Color de acento para el ícono */
     margin-right: 12px; /* Espacio entre ícono y texto */
-    font-size: 1em; /* Tamaño del ícono */
+    font-size: 1.2em; /* Tamaño del ícono */
 }
 
 
