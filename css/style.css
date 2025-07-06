@@ -894,7 +894,7 @@ ul.lista-moderna li .icon-bullet {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Ajuste para items más pequeños si es necesario o mantener 1-2 */
     }
      .accesorio-card-item img {
-        height: 180px;
+        height: 220px; /* Aumentada para móviles grandes y tablets pequeñas */
     }
     ul.lista-moderna {
         column-count: 1; /* 1 columna en móviles */
@@ -912,7 +912,7 @@ ul.lista-moderna li .icon-bullet {
         grid-template-columns: 1fr; /* 1 columna */
     }
     .accesorio-card-item img {
-        height: 160px;
+        height: 200px; /* Aumentada para móviles pequeños */
     }
      #accesorios-intro h1 {
         font-size: 2em;
