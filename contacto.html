@@ -59,7 +59,7 @@
 
     <section id="formulario-contacto" class="section-padding">
         <h2 class="section-title text-center">Envíanos un Mensaje</h2>
-        <form action="#" method="POST" class="contact-form">
+        <form name="contact" method="POST" data-netlify="true" action="/thank-you.html" class="contact-form">
             <div class="form-group">
                 <label for="nombre">Nombre Completo:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -75,6 +75,7 @@
             <div class="form-group">
                 <label for="mensaje">Mensaje:</label>
                 <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+            <input type="hidden" name="form-name" value="contact">
             </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary btn-submit">Enviar Mensaje</button>
