@@ -1588,3 +1588,78 @@ ul.lista-moderna li .icon-bullet {
     padding: 12px 30px !important; /* !important para asegurar si hay otros estilos de .btn */
     font-size: 1.1em !important;
 }
+
+/* Estilos para el Modal de Netlify en contacto.html */
+.modal-netlify {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-netlify.show {
+    display: flex; /* Usar flex para centrar el contenido */
+}
+
+.modal-netlify-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    animation: modal-netlify-appear 0.3s ease-out;
+}
+
+@keyframes modal-netlify-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-netlify-content h2 {
+    font-family: var(--font-secondary);
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.modal-netlify-content p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.modal-netlify-close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.modal-netlify-close-button:hover,
+.modal-netlify-close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}

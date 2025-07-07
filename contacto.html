@@ -59,7 +59,7 @@
 
     <section id="formulario-contacto" class="section-padding">
         <h2 class="section-title text-center">Envíanos un Mensaje</h2>
-        <form name="contact" method="POST" data-netlify="true" action="/thank-you.html" class="contact-form">
+        <form name="contact" method="POST" data-netlify="true" class="contact-form">
             <div class="form-group">
                 <label for="nombre">Nombre Completo:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -134,5 +134,188 @@
     <i class="fab fa-whatsapp"></i>
 </a>
     <script src="js/main.js"></script>
+
+    <!-- Modal de Agradecimiento -->
+    <div id="graciasModal" class="modal-netlify">
+        <div class="modal-netlify-content">
+            <span class="modal-netlify-close-button" onclick="document.getElementById('graciasModal').classList.remove('show');">&times;</span>
+            <i class="fas fa-check-circle fa-3x" style="color: green; margin-bottom: 15px;"></i>
+            <h2>¡Gracias!</h2>
+            <p>Tu mensaje ha sido enviado con éxito. Nos pondremos en contacto contigo a la brevedad.</p>
+        </div>
+    </div>
+
+    <script>
+        const contactForm = document.querySelector('form[name="contact"]');
+        const graciasModal = document.getElementById('graciasModal');
+        const closeButton = document.querySelector('.modal-netlify-close-button');
+
+        if (contactForm && graciasModal) {
+            contactForm.addEventListener('submit', function(e) {
+                // Permitir que Netlify maneje el envío primero.
+                // Netlify por defecto previene el envío tradicional si detecta AJAX.
+                // Si no se usa AJAX explícito, Netlify redirige a su propia página de agradecimiento
+                // a menos que se especifique un 'action'. Como no hay 'action' para redirección,
+                // Netlify mostrará su mensaje por defecto *en la misma página* o recargará
+                // la página mostrando un mensaje de éxito de Netlify.
+
+                // Para mostrar NUESTRO modal, necesitamos que Netlify nos notifique.
+                // Netlify Forms con AJAX habilitado (por defecto si hay JS) dispara eventos.
+                // Vamos a asumir que el formulario se resetea tras un envío exitoso como señal.
+                // O mejor, usar el atributo `data-netlify-recaptcha="true"` (si se usa recaptcha)
+                // o simplemente escuchar un evento personalizado si Netlify lo permite fácilmente,
+                // o una forma más directa es usar la redirección a la misma página con un parámetro.
+
+                // Solución simple: Netlify recarga la página y añade un parámetro ?submission-succeeded=true a la URL
+                // Esto no es un comportamiento documentado por defecto, sino una posible configuración.
+                // La forma más común es que Netlify maneje la UI de "success" o redirija.
+
+                // Para evitar la redirección y mostrar el modal, el formulario DEBE enviarse vía AJAX.
+                // Netlify hace esto automáticamente si encuentra un script que no sea el suyo.
+                // Vamos a intentar mostrar el modal DESPUÉS de que el usuario presione submit.
+                // Y el formulario se reseteará.
+                // Esto podría mostrar el modal incluso si el envío falla.
+
+                // La forma más confiable para Netlify es que Netlify redirija a una página de "gracias"
+                // donde SÍ podemos controlar el modal.
+                // Dado que se eliminó thank-you.html, la segunda opción es:
+                // Netlify tiene una opción para mostrar un mensaje de éxito personalizado en la misma página.
+                // <form data-netlify-success-message="Tu mensaje fue enviado! Gracias. (Este es de Netlify)">
+                // Esto no es un modal.
+
+                // Para un modal personalizado en la MISMA página, sin recarga a otra página de "gracias":
+                // 1. Se envía el form.
+                // 2. Netlify lo procesa AJAX.
+                // 3. Netlify *puede* disparar un evento. El evento `netlify-success` o `ajax:success`
+                //    no está garantizado o es difícil de capturar sin jQuery o configuraciones específicas.
+
+                // Un hack común es escuchar el evento 'reset' del formulario, asumiendo que Netlify
+                // lo resetea tras un envío AJAX exitoso.
+                // O, mejor aún, Netlify permite que JavaScript maneje el envío y luego se lo pase a Netlify.
+
+                // La forma más simple que *podría* funcionar con Netlify es dejar que Netlify
+                // muestre su mensaje de éxito por defecto, y nosotros no hacer nada con JS para el modal.
+                // PERO el requerimiento es un MODAL personalizado.
+
+                // Solución para Netlify AJAX forms:
+                // Netlify Forms + AJAX: Cuando un formulario es enviado usando AJAX, Netlify
+                // limpiará los campos del formulario y opcionalmente mostrará un mensaje de éxito
+                // o ejecutará una función de callback.
+                // No hay un evento estándar `netlify-success` directamente en el elemento form.
+                // La documentación sugiere manejar el `submit` con JS, hacer el fetch a Netlify,
+                // y luego en el `.then()` del fetch, mostrar el modal.
+
+                // Vamos a usar una aproximación más simple:
+                // Cuando el formulario se envíe, limpiaremos el formulario y mostraremos el modal.
+                // Esto sucede ANTES de que Netlify confirme, lo cual no es ideal.
+
+                // **Revisión del plan:** El paso 3 del plan menciona `netlify-success`.
+                // Esto es un evento que se puede escuchar si se configura el form para usar AJAX de cierta manera
+                // o si se usan ciertas librerías.
+                // Con Vanilla JS, Netlify Forms que se envían por AJAX (por defecto si hay JS en la página)
+                // simplemente hacen su trabajo. Para ejecutar código DESPUÉS, se puede añadir un listener
+                // al propio formulario para el evento "submit" y Netlify *debería* permitir que ese JS se ejecute
+                // y luego Netlify toma el control para el envío AJAX.
+
+                // Si el formulario se envía y Netlify lo procesa con AJAX, la página no se recarga.
+                // Podemos intentar mostrar el modal inmediatamente y luego resetear el formulario.
+                // Esto no garantiza que el envío haya sido exitoso.
+
+                // **La ÚNICA forma 100% confiable de mostrar un modal personalizado DESPUÉS de un envío EXITOSO de Netlify
+                // sin una página de gracias separada es que Netlify dispare un evento que podamos escuchar,
+                // o que configuremos el envío AJAX manualmente.**
+
+                // Netlify *sí* resetea el formulario tras un envío AJAX exitoso. Podemos usar eso.
+                // Sin embargo, el usuario quiere el modal *cuando el servidor de Netlify confirme*.
+                // Esto implica una respuesta del servidor.
+
+                // Si usamos el `action` para redirigir a la misma página con un hash: `action="#gracias"`
+                // Luego en JS podemos detectar el hash y mostrar el modal.
+                // Modificaremos el form action para esto.
+
+                // No, la especificación de Netlify es que si hay un `action`, redirige allí.
+                // Si no hay `action`, Netlify maneja el success en la misma página (mensaje por defecto).
+
+                // Vamos a intentar una solución donde el modal se muestra, y el form se resetea.
+                // El usuario verá el modal. Si hubo un error de Netlify, el usuario no lo sabrá de inmediato.
+                // Esto es una limitación sin una página de gracias o un manejo AJAX más complejo.
+
+                // Simulación de "éxito" para mostrar el modal.
+                // Esto se activará con el botón de submit, no con la confirmación real de Netlify.
+                // Para una mejor UX con confirmación real, se necesita una página de gracias o manejo AJAX avanzado.
+
+                // Dado el flujo actual y herramientas:
+                // Cuando el usuario da submit:
+                // 1. Prevenimos el envío default para controlarlo con JS.
+                // 2. Creamos un FormData.
+                // 3. Hacemos un fetch POST a la URL del formulario (que es la página actual).
+                // 4. En el .then() de la respuesta exitosa, mostramos el modal y reseteamos el form.
+                // 5. En el .catch() manejamos errores.
+
+                // Esto es reimplementar lo que Netlify hace. Es mejor dejar que Netlify lo haga.
+                // Netlify dice: "If JavaScript is enabled in the browser, forms are submitted via AJAX by default."
+                // "After a successful AJAX submission, Netlify clears the form fields and by default shows a success message."
+                // Para interceptar esto, la documentación sugiere:
+                // element.addEventListener("submit", handleSubmit);
+                // const handleSubmit = (event) => {
+                //   event.preventDefault(); // Previene el envío normal
+                //   const myForm = event.target;
+                //   const formData = new FormData(myForm);
+                //   fetch("/", { // O la URL del action si la hay
+                //     method: "POST",
+                //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                //     body: new URLSearchParams(formData).toString(),
+                //   })
+                //   .then(() => {
+                //      console.log("Form successfully submitted");
+                //      graciasModal.classList.add('show'); // MUESTRA NUESTRO MODAL
+                //      contactForm.reset(); // Limpia el formulario
+                //   })
+                //   .catch((error) => alert(error));
+                // };
+                // Esto requiere que el path del fetch sea el correcto. Si el form está en /contacto.html,
+                // y no hay 'action', el 'path' para el POST es la URL actual.
+                // El atributo 'name' del form es usado por Netlify para identificarlo.
+
+                // Vamos a implementar la solución de `fetch` manual.
+                e.preventDefault();
+                const formData = new FormData(contactForm);
+
+                fetch(contactForm.getAttribute('action') || window.location.pathname, { // Usa action si existe, sino la URL actual. Netlify no necesita action si el form está en la página correcta.
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" }, // Netlify espera esto
+                    body: new URLSearchParams(formData).toString(),
+                })
+                .then(response => {
+                    if (response.ok) {
+                        graciasModal.classList.add('show');
+                        contactForm.reset();
+                    } else {
+                        // Podríamos tener un modal de error o un alert
+                        response.text().then(text => {
+                             alert("Error al enviar el formulario: " + text);
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error en el envío del formulario:", error);
+                    alert("Error al enviar el formulario. Por favor, inténtalo de nuevo.");
+                });
+            });
+        }
+
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                graciasModal.classList.remove('show');
+            });
+        }
+
+        // Cerrar modal si se hace clic fuera de él
+        window.addEventListener('click', (event) => {
+            if (event.target === graciasModal && graciasModal.classList.contains('show')) {
+                graciasModal.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>
